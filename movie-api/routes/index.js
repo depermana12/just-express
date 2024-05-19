@@ -16,6 +16,7 @@ router.get("/popular", (req, res) => {
 
   const firstPage = (page - 1) * 10;
   const nextPage = page * 10;
+
   let paginated = results.slice(firstPage, nextPage);
 
   res.json({ page, results: paginated });

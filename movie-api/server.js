@@ -16,6 +16,7 @@ const apiKeyAuth = (req, res, next) => {
   next();
 };
 
+app.use(express.json());
 app.use(apiKeyAuth);
 app.use("/", indexRouter);
 app.use("/movie", moviesRouter);
