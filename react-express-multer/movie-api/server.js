@@ -1,4 +1,6 @@
 const express = require("express");
+const path = require("path");
+const cors = require("cors");
 
 const indexRouter = require("./routes/index");
 const moviesRouter = require("./routes/movies");
@@ -16,8 +18,10 @@ const apiKeyAuth = (req, res, next) => {
   next();
 };
 
+app.use(cors());
 app.use(express.json());
-app.use(apiKeyAuth);
+app.use(express.static(path.join(__dirname, "public")));
+// app.use(apiKeyAuth);
 app.use("/", indexRouter);
 app.use("/movie", moviesRouter);
 app.use("/search", searchRouter);

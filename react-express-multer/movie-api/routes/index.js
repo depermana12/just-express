@@ -1,4 +1,8 @@
 const express = require("express");
+const fs = require("fs");
+const multer = require("multer");
+const uploadBucket = multer({ dest: "public/images/tmp" });
+
 const connectDB = require("../config/db");
 
 const movies = require("../data/movies");
@@ -7,6 +11,11 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   res.json({ success: true });
+});
+
+router.post("/uploadFile", uploadBucket.single("file"), (req, res) => {
+  console.log("uploaded");
+  res.json("file uploaded!");
 });
 
 router.get("/getdb", async (req, res) => {
