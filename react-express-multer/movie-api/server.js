@@ -12,8 +12,7 @@ const port = 5000;
 const apiKeyAuth = (req, res, next) => {
   const api_key = "qwerty";
   if (req.query.api_key !== api_key) {
-    res.status(401).json({ success: false, message: "Invalid API_KEY" });
-    return;
+    return res.status(401).json({ success: false, message: "Invalid API_KEY" });
   }
   next();
 };
