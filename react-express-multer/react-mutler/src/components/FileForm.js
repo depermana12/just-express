@@ -51,26 +51,19 @@ const FileForm = () => {
           uploadFile();
         }}
       >
-        <div className="form-row">
-          <label htmlFor="name">
-            {" "}
-            {errorStatus ? (
-              <p style={{ color: "red" }}>{errorStatus}</p>
-            ) : (
-              <p>Upload file</p>
-            )}{" "}
-          </label>
-          <input
-            type="file"
-            name="file"
-            ref={fileInputRef}
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-        </div>
-        <button className="block" type="submit" value="submit">
+        <input
+          type="file"
+          name="file"
+          ref={fileInputRef}
+          onChange={(e) => setFile(e.target.files[0])}
+        />
+        <button type="submit" value="submit">
           Submit
         </button>
-      </form>
+      </form>{" "}
+      <div className="error-wrap">
+        {<p style={{ color: "red" }}>{errorStatus}</p>}{" "}
+      </div>
     </div>
   );
 };
